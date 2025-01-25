@@ -2,9 +2,11 @@ package com.mojtaba.todo.repositories
 
 import com.mojtaba.todo.data.ToDoDao
 import com.mojtaba.todo.data.models.ToDoTask
+import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
+@ViewModelScoped
 class ToDoRepository @Inject constructor(private val toDoDao: ToDoDao) {
     fun getAllTasks(): Flow<List<ToDoTask>> = toDoDao.getAllTasks()
     fun sortLowPriorityTasks(): Flow<List<ToDoTask>> = toDoDao.sortByLowPriority()
